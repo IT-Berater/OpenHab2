@@ -1,0 +1,43 @@
+//
+// Steuerung des Fritzbox Anrufe via OpenHAB2
+//
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+//
+
+import java.util.Date
+import java.text.SimpleDateFormat
+
+// Alle roten Fehlermeldung im Designer können ignoriert werden!
+
+
+rule "Bei eingehenden Telefonanruf ein Pushover versenden"
+ when
+	Item fboxRinging changed from OFF to ON 
+ then
+ 
+   logInfo("Regel", "Telefonanruf wurde erkannt, versende eine Pushover Nachricht")  
+   
+    var SimpleDateFormat df = new SimpleDateFormat( "HH:mm:ss dd.MM.YYYY" )
+	var String timestamp = df.format( new Date() )
+	   
+ 	try{
+		   // Daten aus der Fritzbox auslesen, 
+		   val incCall = fboxIncomingCall.state as StringListType
+		   // den zweiten Teil, die Nummer holen also alles nach dem Komma
+		   val callerNumber = incCall.getValue(1)  	    
+		      
+		   val lastCallName   = fboxIncomingCallResolved.state as StringListType	  
+		   // Die eigene Rufnummer aus der Variable entfernen
+		   val letzterAnrufer  =lastCallName.getValue(1)	      
+		     
+		   // Anruf von Wenzlaff Thomas (Home) mit Nr. 0xxxxxxxxxx um 10:17:24 14.04.2017
+		   val nachricht = "Anruf von "+ letzterAnrufer + " mit Nr. " + callerNumber + " um "  + timestamp
+		
+		   logInfo("Pushover", nachricht)	     
+		   pushover(nachricht)
+	   
+	   }catch(Exception e){
+	   	 // Unbekannter Anruf um 11:03:11 14.04.2017
+	     logInfo("Pushover", "Unbekannter Anruf um " + timestamp)	   			
+	   } 	   	
+end
