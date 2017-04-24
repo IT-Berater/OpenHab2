@@ -1,0 +1,16 @@
+//
+// Wemo Zugriff fuer OpenHAB2
+//
+// 
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+// 
+Group gWemo
+
+// Netz Schalter
+Switch wemoSchalter          { channel="wemo:socket:Socket-1_0-:state" }
+
+// Bewegungssensor wenn bewegung erkannt 1 sonst 0
+Switch wemoBewegung          { channel="wemo:motion:Sensor-1_0-:motionDetection" }
+// Letzte Bewegung erkannt, 
+// Format siehe: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html
+DateTime wemoLetzteBewegung   "Letzte Bewegung [%1$td. %1$tb %1$tH:%1$tM:%1$tS Uhr]" { channel="wemo:motion:Sensor-1_0-:lastMotionDetected" }
