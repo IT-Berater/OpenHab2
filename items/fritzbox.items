@@ -1,0 +1,29 @@
+//
+// FritzBox Zugriff ueber das TR064 Binding
+//
+// https://github.com/gitbock/fritzboxtr064
+// 
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+// 
+Group gTelefon
+Group gAnwesenheit
+Group gTv
+
+Contact cFboxMacOnlineTHandy      "Handy von Thomas [MAP(an-abwesend.map):%s]"     <present> {fritzboxtr064="maconline:" }
+Contact cFboxMacOnlineKHandy      "Handy von  [MAP(an-abwesend.map):%s]"  <present> {fritzboxtr064="maconline:" }
+Contact cFboxMacOnlineTIpad       "IPad  von Thomas [MAP(an-abwesend.map):%s]"         <present> {fritzboxtr064="maconline:" }
+Contact cFboxMacOnlineKIpad       "IPad  von  [MAP(an-abwesend.map):%s]"     <present> {fritzboxtr064="maconline:" }
+Contact cFboxMacOnlinePiZero      "PI- [MAP(an-abwesend.map):%s]"                     <present> {fritzboxtr064="maconline:" }
+
+Contact cFboxMacOnlineTvPana      "TV Panasonic [MAP(an-aus.map):%s]"               <present> {fritzboxtr064="maconline:" }
+Contact cFboxMacOnlineTvSony      "TV Sony  [MAP(an-aus.map):%s]"             <present> {fritzboxtr064="maconline:" }
+
+// Call Monitor - AN schalten mit: #96*5* AUS schalten mit: #96*4*
+Switch  fboxRinging         		"[MAP(presence.map):%s]"                       	{fritzboxtr064="callmonitor_ringing"}
+Call    fboxIncomingCall    		"Eingehender Anruf von: [%1$s nach %2$s]"     	{fritzboxtr064="callmonitor_ringing"} 
+Call    fboxOutgoingCall    		"Ausgehender Anruf von: [%1$s nach %2$s]"     	{fritzboxtr064="callmonitor_outgoing"}
+Call    fboxIncomingCallResolved    "Telefonanruf von: [%1$s nach %2$s]"  		  {fritzboxtr064="callmonitor_ringing:resolveName"} 
+ 
+Number  fboxMissedCalls     		"Verpasste Anrufe der letzten 24 Stunden [%s]"  {fritzboxtr064="missedCallsInDays:1"}
+
+String  fboxWanIP               "Fritzbox WAN IP Adresse [%s]"  {fritzboxtr064="wanip"}
