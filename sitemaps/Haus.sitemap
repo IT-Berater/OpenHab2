@@ -1,0 +1,47 @@
+//
+// Sitemap fuer OpenHAB2
+//
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+//
+sitemap Haus label="Hauptmenue"
+{
+	 
+Frame {
+	Group item=gTelefon label="Fritzbox" icon="network"{ 	
+		
+		Frame label="Wifi" {
+		       	Text 	item=fboxWanIP	
+		       	Text 	item=cFboxMacOnlinePiZero  		icon="phone"
+		       	Text 	item=fboxRinging 				      icon="siren"
+			      Text 	item=fboxIncomingCallResolved 	icon="phone" 
+		       	Text 	item=fboxIncomingCall 			icon="phone"
+		       	Text 	item=fboxOutgoingCall 			icon="phone"
+			     Text 	item=fboxMissedCalls  			icon="phone"			    			   			 
+		}
+    }
+}
+
+Frame {
+	Group item=gAnwesenheit label="Anwesenheit" icon="present"{ 	
+		
+    	Frame label="Anwesenheit" {
+		       	Text 	item=cFboxMacOnlineTHandy  		icon="present"
+		       	Text 	item=cFboxMacOnlineKHandy		  icon="present"			      
+		       	Text	item=cFboxMacOnlineTIpad		  icon="present"	
+		       	Text 	item=cFboxMacOnlineKIpad  		icon="present"
+		}      		
+	} 
+}
+
+Frame {
+	Group item=gWemo label="WeMo" icon="network"{ 
+		
+		Frame label="WeMo" {
+					Switch item=wemoSchalter
+					Switch item=wemoBewegung	
+					Text   item=wemoLetzteBewegung					
+				}
+		}
+	}
+
+} // ENDE
