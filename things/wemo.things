@@ -1,0 +1,8 @@
+
+// 
+// WeMo Schalter und Bewegungssensor fuer OpenHAB2
+//
+
+wemo:socket:Socket-1_0- [udn="Socket-1_0-"]
+
+wemo:motion:Sensor-1_0- [udn="Sensor-1_0-"]
