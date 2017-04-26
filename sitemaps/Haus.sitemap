@@ -10,13 +10,12 @@ Frame {
 	Group item=gTelefon label="Fritzbox" icon="network"{ 	
 		
 		Frame label="Wifi" {
-		       	Text 	item=fboxWanIP	
-		       	Text 	item=cFboxMacOnlinePiZero  		icon="phone"
-		       	Text 	item=fboxRinging 				      icon="siren"
-			      Text 	item=fboxIncomingCallResolved 	icon="phone" 
+		       	Text 	item=fboxWanIP	                icon="network"
+		       	Text 	item=cFboxMacOnlinePiZero  		icon="network"
+		       	Text 	item=fboxRinging 				icon="siren"
+			    Text 	item=fboxIncomingCallResolved 	icon="phone" 
 		       	Text 	item=fboxIncomingCall 			icon="phone"
-		       	Text 	item=fboxOutgoingCall 			icon="phone"
-			     Text 	item=fboxMissedCalls  			icon="phone"			    			   			 
+		       	Text 	item=fboxOutgoingCall 			icon="phone"			    			   			 
 		}
     }
 }
@@ -26,8 +25,8 @@ Frame {
 		
     	Frame label="Anwesenheit" {
 		       	Text 	item=cFboxMacOnlineTHandy  		icon="present"
-		       	Text 	item=cFboxMacOnlineKHandy		  icon="present"			      
-		       	Text	item=cFboxMacOnlineTIpad		  icon="present"	
+		       	Text 	item=cFboxMacOnlineKHandy		icon="present"			      
+		       	Text	item=cFboxMacOnlineTIpad		icon="present"	
 		       	Text 	item=cFboxMacOnlineKIpad  		icon="present"
 		}      		
 	} 
@@ -42,6 +41,19 @@ Frame {
 					Text   item=wemoLetzteBewegung					
 				}
 		}
+}
+
+Frame {
+	Group item=gWetter label="Wetter" icon="temperature"{ 
+		
+	Frame {
+		Text item=temperatur icon="temperature" valuecolor=[>25="red",>15="green",>5="orange",<5="blue"]
+		Text item=feuchte    icon="rain"
+		Text item=druck      icon="pressure"
+		}
 	}
+}
+
 
 } // ENDE
+
