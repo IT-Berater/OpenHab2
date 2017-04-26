@@ -1,0 +1,10 @@
+//
+// Wetter Zugriff ueber Yahoo-Binding
+// 
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+// 
+// Beschreibung siehe
+// http://docs.openhab.org/addons/bindings/yahooweather/readme.html
+// http://woeid.rosselliot.co.nz/lookup/langenhagen
+
+yahooweather:weather:langenhagen [ location=670178 ] 
