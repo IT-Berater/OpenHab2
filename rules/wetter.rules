@@ -1,0 +1,18 @@
+//
+// Wetter Zugriff ueber Yahoo-Binding
+// 
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+// 
+
+
+//------------------------------------------------------------------------
+//    Sendet das Wetter um 9 Uhr per Pushover
+//------------------------------------------------------------------------
+rule "Sende das Wetter per Pushover um 9 Uhr"
+ when
+    Time cron "0 0 9 * * ?"
+ then
+  	     var text = "Wetter in Langenahagen\nAussen Temperatur: " + temperatur.state + " ºC\nLuftdruck: " + druck.state + " hPA\nLuftfeuchtigkeit: " + feuchte.state + " %"
+  	     logInfo("Pushover", text)	  
+    	 pushover(text)
+end 
