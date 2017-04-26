@@ -1,0 +1,11 @@
+//
+// Wetter Zugriff ueber Yahoo-Binding
+// 
+// (c) 2017 Thomas Wenzlaff http://www.wenzlaff.info 
+// 
+
+Group gWetter
+
+Number temperatur 	"Aussen Temperatur [%.1f °C]"  { channel="yahooweather:weather:langenhagen:temperature" }
+Number feuchte      "Luftfeuchtigkeit [%.1f %%]"   { channel="yahooweather:weather:langenhagen:humidity" }
+Number druck        "Luftdruck [%.1f hPA]"         { channel="yahooweather:weather:langenhagen:pressure" }
